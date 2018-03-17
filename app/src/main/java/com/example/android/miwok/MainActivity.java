@@ -31,9 +31,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        /**
+         * This is the first way I learned to implement an OnClickListener
+         * This method uses a java class called NumbersClickListener (reference
+         * NumbersClickListener.java file). It creates a new object from
+         * the NumbersClickListener class and calls the setOnClickListener method
+         * and passes the NumbersClickListener object to it
+         */
         // <-- Start Number button click behavior -->
         // The following is for the Number click behavior
-        NumbersClickListener numbersListener = new NumbersClickListener();
+        // note: must pass context (this), look in NumbersClickListener.java for method
+        NumbersClickListener numbersListener = new NumbersClickListener(this);
 
         // Find view of numbers
         TextView numbersButton = (TextView) findViewById(R.id.numbers);
@@ -42,6 +50,12 @@ public class MainActivity extends AppCompatActivity {
         // <-- End Number button click behavior -->
 
 
+        /**
+         * This is the second way I learned to implement an OnClickListener
+         * This is the same except that the FamilyClickListener object
+         * This method still uses another java class called FamilyClickListener
+         * (reference FamilyClickListener.java file)
+         */
         // The following is for the Family Members click behavior
         //FamilyClickListerner famClickListener = new FamilyClickListerner();
         // above deleted and added inline below because only used once so no need to make a once-used variable
@@ -49,16 +63,18 @@ public class MainActivity extends AppCompatActivity {
         // Find view of numbers
         TextView familyMembersButton = (TextView) findViewById(R.id.family);
 
-        familyMembersButton.setOnClickListener(new FamilyClickListerner());
+        familyMembersButton.setOnClickListener(new FamilyClickListerner(this));
         // <-- End Family Member button click behavior -->
 
 
-        // <-- Start Colors  button click behavior -->
+
         /**
-         * This is yet another way of implementing the onClick method
+         * This is yet another way of implementing the onClickListener
+         * This does away with having a separate java class and overrides
+         * the onClick method inline when the OnClickListener object is created
          */
+        // <-- Start Colors  button click behavior -->
         // The following is for the Colors click behavior
-        //ColorsClickListener colorsListener = new ColorsClickListener();
 
         // Find view of numbers
         TextView colorsButton = (TextView) findViewById(R.id.colors);
@@ -85,8 +101,18 @@ public class MainActivity extends AppCompatActivity {
         // Find view of numbers
         TextView phraseButton = (TextView) findViewById(R.id.phrases);
 
-        phraseButton.setOnClickListener(new PhrasesClickListener());
-        // <-- End Colors button click behavior -->
+        phraseButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                // Create new intent to open the {@link PhrasesActivity}
+                Intent phraseIntent = new Intent(MainActivity.this, PhrasesActivity.class);
+
+                // Start the new activity
+                startActivity(phraseIntent);
+            }
+        });
+        // <-- End Phrases button click behavior -->
 
     }
 }

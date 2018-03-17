@@ -9,6 +9,6 @@
     <TextView
         style="@style/CategoryStyle"
         android:background="@color/category_colors"
-        android:text="HEYOOO!!!" />
+        android:text="@string/category_colors" />
 
 </android.support.constraint.ConstraintLayout>
