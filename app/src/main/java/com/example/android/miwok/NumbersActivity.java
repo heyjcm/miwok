@@ -3,6 +3,8 @@ package com.example.android.miwok;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -49,8 +51,30 @@ public class NumbersActivity extends AppCompatActivity {
         wordsArrayList.add("nine");
         wordsArrayList.add("ten");
 
-        for (int i =0; i < 10; i++) {
-            Log.v("Logging", "wordsArrayList(" + i + "): " + wordsArrayList.get(i));
+//        for (int i =0; i < 10; i++) {
+//            Log.v("Logging", "wordsArrayList(" + i + "): " + wordsArrayList.get(i));
+//        }
+
+        // create a LinearLayout parent view called rootView (use the rootView id from XML
+        LinearLayout rootView = (LinearLayout) findViewById(R.id.rootView);
+
+        // make a child view that is of type TextView; call it wordView (pass context this so
+        // it knows what context -- in this case, context this is NumbersActivity class
+//        TextView wordView = new TextView(this);
+//        // sets the text of the TextView that I just created to the first element in the ArrayList
+//        wordView.setText(wordsArrayList.get(0));
+//
+//        // add child wordView to parent rootView
+//        rootView.addView(wordView);
+
+        // playing with while loops
+        // while loop makes 10 child views and adds them to the rootView LinearLayout view
+        int i = 0;
+        while (i < wordsArrayList.size()) {
+            TextView wordView = new TextView(this);
+            wordView.setText(wordsArrayList.get(i));
+            rootView.addView(wordView);
+            i++;
         }
 
     }
