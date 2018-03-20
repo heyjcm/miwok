@@ -69,12 +69,19 @@ public class NumbersActivity extends AppCompatActivity {
 
         // playing with while loops
         // while loop makes 10 child views and adds them to the rootView LinearLayout view
-        int i = 0;
-        while (i < wordsArrayList.size()) {
+//        int i = 0;
+//        while (i < wordsArrayList.size()) {
+//            TextView wordView = new TextView(this);
+//            wordView.setText(wordsArrayList.get(i));
+//            rootView.addView(wordView);
+//            i++;
+//        }
+
+        // changing the while loop into a for loop (Lesson 2.12)
+        for (int i = 0; i < wordsArrayList.size(); i++) {
             TextView wordView = new TextView(this);
             wordView.setText(wordsArrayList.get(i));
             rootView.addView(wordView);
-            i++;
         }
 
     }
