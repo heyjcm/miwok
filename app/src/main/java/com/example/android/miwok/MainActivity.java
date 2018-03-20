@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
         /**
          * This is the first way I learned to implement an OnClickListener
          * This method uses a java class called NumbersClickListener (reference
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         numbersButton.setOnClickListener(numbersListener);
         // <-- End Number button click behavior -->
+
 
 
         /**
