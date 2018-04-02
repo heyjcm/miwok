@@ -3,7 +3,10 @@ package com.example.android.miwok;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -39,7 +42,7 @@ public class NumbersActivity extends AppCompatActivity {
         // create new ArrayList
         ArrayList<String> wordsArrayList = new ArrayList<String>();
 
-        // add "one" through "ten" into ArraayList using .add
+        // add "one" through "ten" into ArrayList using .add
         wordsArrayList.add("one");
         wordsArrayList.add("two");
         wordsArrayList.add("three");
@@ -56,7 +59,7 @@ public class NumbersActivity extends AppCompatActivity {
 //        }
 
         // create a LinearLayout parent view called rootView (use the rootView id from XML
-        LinearLayout rootView = (LinearLayout) findViewById(R.id.rootView);
+        //LinearLayout rootView = (LinearLayout) findViewById(R.id.rootView);
 
         // make a child view that is of type TextView; call it wordView (pass context this so
         // it knows what context -- in this case, context this is NumbersActivity class
@@ -77,12 +80,27 @@ public class NumbersActivity extends AppCompatActivity {
 //            i++;
 //        }
 
-        // changing the while loop into a for loop (Lesson 2.12)
+/*        // changing the while loop into a for loop (Lesson 2.12)
         for (int i = 0; i < wordsArrayList.size(); i++) {
             TextView wordView = new TextView(this);
             wordView.setText(wordsArrayList.get(i));
             rootView.addView(wordView);
-        }
+        }*/
+        // commented out for Lesson 2.17
+
+        // Lesson 2.17
+        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, wordsArrayList);
+
+        ListView listView = (ListView) findViewById(R.id.list);
+
+        listView.setAdapter(itemsAdapter);
+
+        // Lesson 2.19
+/*        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, wordsArrayList);
+
+        GridView gridView = (GridView) findViewById(R.id.gridderviewer);
+
+        gridView.setAdapter(itemsAdapter);*/
 
     }
 
